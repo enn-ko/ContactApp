@@ -26,7 +26,7 @@ const NavBar = () => {
   }
 
   return (
-    <div className="flex justify-between items-center  gap-5 px-6 pt-2">
+    <div className="flex justify-between items-center md:gap-5 md:px-6 pt-2">
       <div className="flex items-center justify-start gap-3 basis-[18%]">
         <button onClick={() =>  setMenuActive(!menuActive)} className="p-3 hover:bg-gray-200 duration-200 rounded-full">
 
@@ -37,13 +37,13 @@ const NavBar = () => {
           <p className="text-xl">Contacts</p>
         </div>
       </div>
-      <div className="flex items-center justify-between flex-1">
+      <div className="flex items-center justify-between md:ml-5 flex-1">
         <button 
         onClick={handleToggleSearch}
-        className="md:hidden flex items-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
+        className="md:hidden flex flex-col items-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
           <MdSearch className="text-xl"/>
           {isToggledVisible && (
-          <div className="bg-gray-200 px-3 py-3 basis-[60% ] items-center justify-start gap-5 rounded-md" id="navbar-search">
+          <div className="bg-gray-200 px-3 py-3 basis-[60% ] absolute top-2.5 right-4 items-center justify-start gap-5 rounded-md" id="navbar-search">
             <input type="text" placeholder="Search" className="focus:outline-none bg-transparent flex-1" />
           </div>
         )}

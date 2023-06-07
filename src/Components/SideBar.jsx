@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState,useMemo } from "react";
 import { StateContext } from "../Services/Context/Context";
 import { FaPlus } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa";
@@ -10,6 +10,7 @@ import { MdOutlineAutoFixHigh } from "react-icons/md";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BiPlus } from "react-icons/bi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getAllContactData } from "../Services/Apis/FireStoreApi";
 import { useLogoutMutation } from "../Services/Apis/authApi";
 import { removeUser } from "../Services/slice/userSlice";
 import { useDispatch } from "react-redux";
@@ -24,6 +25,8 @@ import { GrFormClose } from "react-icons/gr";
 
 const SideBar = () => {
 
+  
+
   const location = useLocation()
 
   const nav = useNavigate()
@@ -37,7 +40,10 @@ const SideBar = () => {
   const [modalActive, setModalActive] = useState(false);
 
   
-
+  const [allContacts, setAllContacts] = useState([])
+  useMemo(() => {
+    getAllContactData(setAllContacts,token)
+  }, [])
 
 
   const handleLogout = async () => {
@@ -72,7 +78,7 @@ const SideBar = () => {
 
   return (
     <motion.div
-    className="absolute w-[22%] px-2 h-[90vh] overflow-y-scroll top-0 left-0"
+    className=" w-[55%] md:w-[28%] lg:w-[20%] bg-background md:none max-h-full absolute px-2 overflow-y-auto top-20 left-0"
       initial={{x:0}}
 
       animate={menuActive ? { x: -400 } : { x: 0}}
@@ -131,6 +137,7 @@ const SideBar = () => {
           <button onClick={() => (setContact(true), setOften(false), setOther(false), setConsolidate(false), setTrash(false))} className={`flex items-center justify-start gap-8  px-6  rounded-e-full py-2 w-full ${contact? "bg-button text-button-text":"hover:bg-[#4f546b]"}`}>
             <FaRegUser />
             <p>Contact</p>
+            <span>{allContacts.length}</span>
           </button>
           </Link>
           <button onClick={() => (setContact(false), setOften(true), setOther(false), setConsolidate(false), setTrash(false))} className={`flex items-center justify-start gap-8   px-6  rounded-e-full py-2 w-full ${often?'bg-button text-button-text' :'hover:bg-[#4f546b]'}`}>

@@ -51,8 +51,8 @@ const Person = () => {
   }, []);
   return (
     <motion.div
-      initial={{ marginLeft: "20%" }}
-      animate={menuActive ? { marginLeft: 0 } : { marginLeft: "20%" }}
+      initial={{ marginLeft: "23%" }}
+      animate={menuActive ? { marginLeft: 0 } : { marginLeft: "23%" }}
       transition={{ duration: 0.25 }}
       className={`mt-8 bg-transparent ${menuActive ? "px-8" : ""}`}
     >

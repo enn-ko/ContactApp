@@ -21,7 +21,7 @@ const App = () => {
       {!isRegOrLogin && <NavBar />}
       
       <div
-        className="relative"
+        className="flex"
       >
         {!isRegOrLogin && <SideBar />}
         

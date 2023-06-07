@@ -111,7 +111,7 @@ const ContactTableComponent = ({
       
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`cursor-pointer relative  ${
+      className={`cursor-pointer relative ${
         isChecked || isHovered ? "bg-[#4f546b]" : ""
       }`}
     >

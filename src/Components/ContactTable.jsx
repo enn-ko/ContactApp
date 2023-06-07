@@ -52,7 +52,7 @@ const ContactTable = () => {
       initial={{ marginLeft: "20%" }}
       animate={menuActive ? { marginLeft: 0 } : { marginLeft: "20%" }}
       transition={{ duration: 0.25 }}
-      className={`flex-1 px-8`}
+      className={`flex-1 px-8 overflow-x-auto h-screen`}
     >
       <table className="table-auto w-full px-5 font-medium ">
         <thead className="">
@@ -60,8 +60,8 @@ const ContactTable = () => {
             <tr className="border-b-[1px] ">
               <th className="text-start w-1/5">Name</th>
               <th className="text-start w-1/5">Email</th>
-              <th className="text-start  w-1/5">Phone number</th>
-              <th className="text-start">Company</th>
+              <th className="text-start  w-1/5">Phone Number</th>
+              <th className="text-start">Job title & Company</th>
               <motion.th
                 initial={{ opacity: 0, display: "none" }}
                 animate={
@@ -72,7 +72,7 @@ const ContactTable = () => {
                 transition={{ duration: 0.45 }}
                 className="text-start"
               >
-                indicator
+                
               </motion.th>
 
               <th
