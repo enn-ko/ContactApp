@@ -10,14 +10,14 @@ import { MdSearch } from "react-icons/md";
 
 
 import user from "../../img/user.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { StateContext } from "../Services/Context/Context";
 const NavBar = () => {
 
  
-  
+  const [isToggledVisible,setIsToggledVisible] = useState(false)
 
-  const {menuActive, setMenuActive,isToggledVisible,setIsToggledVisible} = useContext(StateContext)
+  const {menuActive, setMenuActive} = useContext(StateContext)
 
   function handleToggleSearch (){
     // setIsToggleVisible((prevState) => !prevState);
@@ -40,16 +40,16 @@ const NavBar = () => {
       <div className="flex items-center justify-between md:ml-5 flex-1">
         <button 
         onClick={handleToggleSearch}
-        className="md:hidden flex flex-col items-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
+        className="sm:hidden relative flex  flex-col items-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
           <MdSearch className="text-xl"/>
           {isToggledVisible && (
-          <div className="bg-gray-200 px-3 py-3 basis-[60% ] absolute top-2.5 right-4 items-center justify-start gap-5 rounded-md" id="navbar-search">
+          <div className="bg-gray-200 px-3 py-3 basis-[60% ] absolute top-0 right-[-11rem] items-center justify-start gap-5 rounded-md" id="navbar-search">
             <input type="text" placeholder="Search" className="focus:outline-none bg-transparent flex-1" />
           </div>
         )}
         </button>
      
-        <div className="bg-gray-200 px-3 py-3 basis-[60%] hidden md:flex items-center justify-start gap-5 rounded-md" id="navbar-search">
+        <div className="bg-gray-200 px-3 py-3 basis-[60%] hidden sm:flex items-center justify-start gap-5 rounded-md" id="navbar-search">
         <button>
           <MdSearch className="text-xl"/>
         </button>

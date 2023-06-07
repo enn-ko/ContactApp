@@ -2,20 +2,20 @@ import { useContext, useState } from "react";
 import { useRegisterMutation } from "../Services/Apis/authApi";
 import { useNavigate,Link } from "react-router-dom";
 import {BsFillEyeSlashFill,BsFillEyeFill} from 'react-icons/bs'
-import { StateContext } from "../Services/Context/Context";
 
 const Register = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [password_confirmation, setPassword_confirmation] = useState('')
+  const [isToggledVisible, setIsToggledVisible] = useState(false);
+
 
   const contactData = {name, email, password, password_confirmation}
-  const {isToggleVisible,setIsToggleVisible} = useContext(StateContext)
 
    // <<------toggleToggledbtn----->>
    function handleToggleVisible (){
-    setIsToggleVisible((prevState) => !prevState);
+    setIsToggledVisible((prevState) => !prevState);
   }
 
   const nav = useNavigate()
@@ -63,13 +63,13 @@ const handleRegister = async (e) => {
           <button
             className="absolute inset-y-0 right-0 flex items-center text-gray-600"
             onClick={handleToggleVisible}>
-            {isToggleVisible ? (
+            {isToggledVisible ? (
                 <BsFillEyeFill className='text-2xl text-gray-500 dark:text-gray-400'/>) : (
                 <BsFillEyeSlashFill className='text-2xl text-gray-500 dark:text-gray-400'/>
             )}
             </button>
           <input
-            type={isToggleVisible ? "text" : "password"}
+            type={isToggledVisible ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"

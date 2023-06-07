@@ -4,11 +4,10 @@ import { getContactById } from "../Apis/FireStoreApi";
 export const StateContext = createContext()
 
 const StateContextProvider = ({children}) => {
-  const [isToggledVisible, setIsToggledVisible] = useState(false);
   const [menuActive, setMenuActive] = useState(false)
     
  
-    const data = {menuActive, setMenuActive,isToggledVisible,setIsToggledVisible}
+    const data = {menuActive, setMenuActive}
 
     return (
         <StateContext.Provider value={data}>
