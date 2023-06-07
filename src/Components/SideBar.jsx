@@ -78,7 +78,7 @@ const SideBar = () => {
 
   return (
     <motion.div
-    className=" w-[55%] md:w-[28%] lg:w-[20%] bg-background md:none max-h-full absolute px-2 overflow-y-auto top-20 left-0"
+    className=" w-[49%] sm:w-[33%] md:w-[29%] lg:w-[21%] md:none max-h-full absolute px-2 overflow-y-auto top-20 left-0"
       initial={{x:0}}
 
       animate={menuActive ? { x: -400 } : { x: 0}}

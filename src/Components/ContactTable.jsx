@@ -60,8 +60,8 @@ const ContactTable = () => {
             <tr className="border-b-[1px] ">
               <th className="text-start w-1/5">Name</th>
               <th className="text-start w-1/5">Email</th>
-              <th className="text-start  w-1/5">Phone Number</th>
-              <th className="text-start">Job title & Company</th>
+              <th className="text-start  w-1/5">Phone</th>
+              <th className="text-start">Job title</th>
               <motion.th
                 initial={{ opacity: 0, display: "none" }}
                 animate={

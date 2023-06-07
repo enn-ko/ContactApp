@@ -37,7 +37,7 @@ const NavBar = () => {
           <p className="text-xl">Contacts</p>
         </div>
       </div>
-      <div className="flex items-center justify-between md:ml-5 flex-1">
+      <div className="flex items-center justify-between sm:ml-5 flex-1">
         <button 
         onClick={handleToggleSearch}
         className="sm:hidden relative flex  flex-col items-center text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
