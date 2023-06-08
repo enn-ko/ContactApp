@@ -133,7 +133,7 @@ const handleLogout = () => {
 
   return (
     <motion.div
-    className=" w-[57%] sm:w-[33%] md:w-[29%] lg:w-[21%] md:none max-h-full bg-transparent absolute px-2 overflow-y-auto top-20 left-0"
+    className=" w-[57%] sm:w-[33%] md:w-[29%] lg:w-[21%] md:none max-h-full bg-background absolute px-2 overflow-y-auto top-20 left-0"
       initial={{x:0}}
 
       animate={menuActive ? { x: -400 } : { x: 0}}
