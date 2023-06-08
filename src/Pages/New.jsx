@@ -67,9 +67,9 @@ const fileRef = useRef()
   return (
     <motion.div
       initial={{ marginLeft: "23%" }}
-      animate={menuActive ? { marginLeft: 0 } : { marginLeft: "23%" }}
+      animate={menuActive ? { marginLeft: "5%" } : { marginLeft: "23%" }}
       transition={{ duration: 0.25 }}
-      className={`mt-8 bg-transparent${menuActive ? "px-8" : ""}`}
+      className={`mt-8  bg-transparent${menuActive ? "px-8" : ""}`}
     >
       <form onSubmit={handleCreateContact} action="" className=" w-[20rem] md:w-[30rem]">
         <div onClick={() => fileRef.current.click()} className="w-[10rem] h-[10rem] mb-8 bg-button rounded-full grid place-items-center cursor-pointer" >

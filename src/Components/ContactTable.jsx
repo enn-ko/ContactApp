@@ -17,7 +17,26 @@ import ContactTableComponent from "./ContactTableComponent";
 import { getAllContactData, postContactData } from "../Services/Apis/FireStoreApi";
 import { useNavigate } from "react-router-dom";
 import { useGetContactQuery } from "../Services/Apis/ContactApi";
+import { useMediaQuery } from 'react-responsive'
 const ContactTable = () => {
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1537px)'
+  })
+  const laptop = useMediaQuery({
+    query: '(min-width: 1280px)'
+  })
+  const tablet = useMediaQuery({
+    query: '(min-width: 1024px)'
+  })
+
+  const phone = useMediaQuery({
+    query: '(min-width: 768px)'
+  })
+
+  const smPhone = useMediaQuery({
+    query: '(min-width: 640px)'
+  })
+
 
   const [allContacts, setAllContacts] = useState([])
 
@@ -49,8 +68,8 @@ const ContactTable = () => {
 
   return (
     <motion.div
-      initial={{ marginLeft: "20%" }}
-      animate={menuActive ? { marginLeft: 0 } : { marginLeft: "20%" }}
+      initial={tablet ?{ marginLeft: "20%" }:{marginLeft : 0}}
+      animate={menuActive ? { marginLeft: 0 } :(tablet ? { marginLeft: "20%" } : {marginLeft: 0}) }
       transition={{ duration: 0.25 }}
       className={`flex-1 px-8 overflow-x-auto h-screen`}
     >

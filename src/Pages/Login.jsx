@@ -31,7 +31,7 @@ const Login = () => {
   }
   return (
     <div className=" flex bg-btc item center justify-around h-screen">
-    <div className=" px-5 h-screen items-center justify-center flex">
+    <div className=" px-5 h-screen items-center justify-center flex absolute lg:relative z-10 ">
       <form onSubmit={handleLogin} action="" className="  w-full  inline">
         <div>
           <p className="  text-htc text-4xl font-mplus-rounded ">Log in</p>
@@ -68,7 +68,7 @@ const Login = () => {
       </form>
     </div>
     {/* Pic div */}
-    <div className=" h-screen flex">
+    <div className=" h-screen flex opacity-5 lg:opacity-100">
       <img
         className=" rounded-2xl  w-full py-5 px-3"
         src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODd8fHRlY2h8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"

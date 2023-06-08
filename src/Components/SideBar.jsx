@@ -18,6 +18,7 @@ import { FiUpload } from "react-icons/fi";
 import { BsColumns } from "react-icons/bs";
 import { LuUsers } from "react-icons/lu";
 import { GrFormClose } from "react-icons/gr";
+import Swal from "sweetalert2";
 
 
 
@@ -45,19 +46,73 @@ const SideBar = () => {
     getAllContactData(setAllContacts,token)
   }, [])
 
+  const swalWithButtons = Swal.mixin({
+    customClass: {
+        confirmButton: "bg-button text-white px-3 py-2 rounded-md text-xl ml-3 mx-3",
+        cancelButton: "bg-red-500 text-white px-3 py-2 rounded-md text-xl",
+    },
+    buttonsStyling: false
+  })
 
-  const handleLogout = async () => {
-    try {
-      const {data} = await logout(token)
-      console.log(data)
-      dispatch(removeUser())
-      if(data.success) nav('/login')
+
+const handleLogout = () => {
+
+    swalWithButtons.fire({
+        title: 'Are you sure?',
+        text: "You want to be LogOut!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes,logout!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then(async(result) => {
+        if (result.isConfirmed) {
+          try {
+            const {data} = await logout(token)
+            console.log(data)
+            dispatch(removeUser())
+            if(data.success) nav('/login')
+            
+          } catch (error) {
+            console.log(error)
+          }
+          swalWithButtons.fire(
+            'Logout!',
+            'Your account has been logout.',
+            'success'
+          )
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithButtons.fire(
+            'Cancelled',
+            'Your account is safe :)',
+            'error'
+          )
+        }
+      })
       
-    } catch (error) {
-      console.log(error)
-    }
+
+
+
+
+
+    
+}
+
+  // const handleLogout = async () => {
+  //   try {
+  //     const {data} = await logout(token)
+  //     console.log(data)
+  //     dispatch(removeUser())
+  //     if(data.success) nav('/login')
+      
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
    
-  }
+  // }
   
   const { menuActive } = useContext(StateContext);
   const [contact, setContact] = useState(false)
@@ -78,7 +133,7 @@ const SideBar = () => {
 
   return (
     <motion.div
-    className=" w-[49%] sm:w-[33%] md:w-[29%] lg:w-[21%] md:none max-h-full absolute px-2 overflow-y-auto top-20 left-0"
+    className=" w-[57%] sm:w-[33%] md:w-[29%] lg:w-[21%] md:none max-h-full absolute px-2 overflow-y-auto top-20 left-0"
       initial={{x:0}}
 
       animate={menuActive ? { x: -400 } : { x: 0}}
